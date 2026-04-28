@@ -37,18 +37,49 @@ gap:15px;
 display:block;
 text-decoration:none;
 background:rgba(255,255,255,0.15);
-padding:30px;
+padding:45px;
 border-radius:15px;
 cursor:pointer;
 transition:.3s;
 font-size:20px;
 font-weight:bold;
 color:white;
+border:none;
 }
 
 .card:hover{
 transform:scale(1.08);
 background:rgba(255,255,255,0.3);
+}
+
+/* زر البداية */
+.start-btn{
+display:block;
+margin:50px auto;
+width:320px;
+padding:25px;
+font-size:28px;
+border-radius:12px;
+background:rgba(255,255,255,0.25);
+}
+
+.start-btn:hover{
+transform:scale(1.1);
+}
+
+/* زر الرجوع */
+.back-btn{
+display:block;
+margin:50px auto;
+width:280px;
+padding:20px;
+font-size:22px;
+border-radius:12px;
+background:rgba(255,255,255,0.25);
+}
+
+.back-btn:hover{
+transform:scale(1.1);
 }
 
 .hidden{
@@ -58,15 +89,37 @@ display:none;
 </head>
 <body>
 
-<!-- الصفحة الأولى -->
-<div class="container" id="mainMenu">
-<h1>اختر التخصص</h1>
-<div class="grid">
-<div class="card" onclick="openNumbers('cs')">💻 حاسب</div>
-<div class="card" onclick="openNumbers('elec')">⚡ كهرباء</div>
-<div class="card" onclick="openNumbers('mech')">🔧 ميكانيكا</div>
-<div class="card" onclick="openNumbers('car')">🚗 سيارات</div>
+<!-- الصفحة الافتتاحية -->
+<div class="container" id="startPage">
+<h1>خريطة دليلة للمعهد</h1>
+<p>مشروع خريطة المعهد</p>
+<br><br>
+<button class="card start-btn" onclick="startApp()">ابدأ</button>
 </div>
+
+<!-- صفحة التخصص -->
+<div class="container hidden" id="mainMenu">
+<h1>اختر التخصص</h1>
+
+<div class="grid">
+<div class="card" onclick="openNumbers('cs')">الحاسب الالي</div>
+<div class="card" onclick="openNumbers('filx')">الانشطة</div>
+<div class="card" onclick="openNumbers('elec')">كهرباء انشائية</div>
+<div class="card" onclick="openNumbers('san')">تمديدات صحية</div>
+<div class="card" onclick="openNumbers('mech')">ميكانيكا عامة</div>
+<div class="card" onclick="openNumbers('cool')">تبريد وتكييف</div>
+<div class="card" onclick="openNumbers('car')">ميكانيكا سيارات</div>
+<div class="card" onclick="openNumbers('pant')">سمكرة ودهان</div>
+<div class="card" onclick="openNumbers('eltro')">الكترونيات</div>
+<div class="card" onclick="openNumbers('JOIN')">نجارة عامة</div>
+
+</div>
+
+<br>
+
+<!-- زر رجوع لحاله -->
+<div class="card back-btn" onclick="gitback()">⬅ رجوع</div>
+
 </div>
 
 <!-- صفحة الأرقام -->
@@ -86,17 +139,29 @@ const numbersData = {
   cs: [4300100007,4300100008,4300100010,4300100012,4301000002],
   elec: [7,8,9,10,11,12],
   mech: [13,14,15,16,17,18],
-  car: [19,20,21,22,23,24]
+  car: [19,20,21,22,23,24],
+  cool: [26,27,28,29,30],
+  eltro: [31,32,33,34,35],
+  san: [41,42,43,44,45],
+  pant: [46,47,48,49,50],
+  flix: [51,52,53,54,55],
+  JOIN: [56,57,58,59,60]
 };
 
-// 🔥 الروابط
+// الروابط
 const links = {
   4300100007: "https://emxad.github.io/4300100007/",
   4300100008: "https://emxad.github.io/4300100008/",
   4300100010: "https://emxad.github.io/4300100010/",
-  4300100012: "https://emxad.github.io/44300100012/",
-  4301000002: "https://emxad.github.io/4301000002/"
+  4300100012: "https://emxad.github.io/4300100012/",
+  4301000002: "https://emxad.github.io/4301000002/",
 };
+
+// زر البداية
+function startApp(){
+  document.getElementById("startPage").classList.add("hidden");
+  document.getElementById("mainMenu").classList.remove("hidden");
+}
 
 function openNumbers(dept){
   selectedDept = dept;
@@ -115,7 +180,7 @@ function openNumbers(dept){
 
     if(links[num]){
       link.href = links[num];
-      link.target = "_self"; // أو "_blank"
+      link.target = "_self";
     }else{
       link.href = "#";
       link.onclick = () => alert("حط رابط لهذا الرقم أولاً 🔧");
@@ -128,6 +193,11 @@ function openNumbers(dept){
 function goBack(){
   document.getElementById("numbersMenu").classList.add("hidden");
   document.getElementById("mainMenu").classList.remove("hidden");
+}
+
+function gitback(){
+  document.getElementById("mainMenu").classList.add("hidden");
+  document.getElementById("startPage").classList.remove("hidden");
 }
 
 </script>
