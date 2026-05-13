@@ -52,7 +52,7 @@ transform:scale(1.08);
 background:rgba(255,255,255,0.3);
 }
 
-/* زر البداية */
+
 .start-btn{
 display:block;
 margin:50px auto;
@@ -67,7 +67,7 @@ background:rgba(255,255,255,0.25);
 transform:scale(1.1);
 }
 
-/* زر الرجوع */
+
 .back-btn{
 display:block;
 margin:50px auto;
@@ -89,7 +89,6 @@ display:none;
 </head>
 <body>
 
-<!-- الصفحة الافتتاحية -->
 <div class="container" id="startPage">
 <h1>خريطة ارشادية</h1>
 <p>مشروع خريطة المعهد</p>
@@ -117,12 +116,12 @@ display:none;
 
 <br>
 
-<!-- زر رجوع لحاله -->
+
 <div class="card back-btn" onclick="gitback()">⬅ رجوع</div>
 
 </div>
 
-<!-- صفحة الأرقام -->
+
 <div class="container hidden" id="numbersMenu">
 <h1>اختر رقم القاعة</h1>
 <div class="grid" id="numbersGrid"></div>
@@ -134,21 +133,20 @@ display:none;
 
 let selectedDept = "";
 
-// الأرقام لكل تخصص
 const numbersData = {
   cs: [4300100007,4300100008,4300100010,4300100012,4301000002],
-  elec: [34003000015,8,9,10,11,12],
-  mech: [3400500002,14,15,16,17,18],
+  elec: [34003000015],
+  mech: [3400500002],
   car: [19,20,21,22,23,24],
   cool: [26,27,28,29,30],
-  eltro: [4300900009,3400900007,33,34,35],
+  eltro: [4300900009,3400900007],
   san: [41,42,43,44,45],
   pant: [46,47,48,49,50],
   flix: [51,52,53,54,55],
   JOIN: [56,57,58,59,60]
 };
 
-// الروابط
+
 const links = {
   4300100007: "https://emxad.github.io/4300100007/",
   4300100008: "https://emxad.github.io/4300100008/",
@@ -162,7 +160,7 @@ const links = {
 
 };
 
-// زر البداية
+
 function startApp(){
   document.getElementById("startPage").classList.add("hidden");
   document.getElementById("mainMenu").classList.remove("hidden");
@@ -188,7 +186,7 @@ function openNumbers(dept){
       link.target = "_self";
     }else{
       link.href = "#";
-      link.onclick = () => alert("حط رابط لهذا الرقم أولاً 🔧");
+      link.onclick = () => alert("تحت الصيانة");
     }
 
     grid.appendChild(link);
